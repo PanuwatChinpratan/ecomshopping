@@ -13,7 +13,7 @@ export default function ProductPage({ product }) {
   function AddtoCart(e) {
     e.preventDefault();
     const id = toast.loading(`Adding ${count} items${count > 1 ? "s" : ""}`);
-    addItem(product);
+    addItem(product, {count});
     toast.success(`${count}${product.name} added`, { id });
   }
 
@@ -83,7 +83,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
