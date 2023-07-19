@@ -18,7 +18,7 @@ export default function SuccessPage() {
       },
     }
   );
-  console.log(data, error);
+  // console.log(data, error);
   const email = data?.customer_details?.email; //res.data นำมาใช้ตรงนี้
 
   return (
