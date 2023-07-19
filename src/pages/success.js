@@ -10,15 +10,16 @@ export default function SuccessPage() {
   const sessionId = router.query.session_id;
 
   const { data, error } = useSWR(
-    () => (sessionId ? `/api/checkout-sessions/${sessionId}` : null),
-    (URL) => axios.get(URL).then((res) => res.data),
+    () => (sessionId ? `/api/checkout-sessions/${sessionId}` : null),//เป็นฟังก์ชันที่ใช้ในการคำนวณ URL ว่ามีค่าหรอไม่
+    (URL) => axios.get(URL).then((res) => res.data),  //ฟังชันที่ใช้ในการเรียก API ด้วย Axios โดยใช้ URL ที่ได้มาจากขั้นตอนแรก /api/checkout-sessions/${sessionId}` ได้รับมาจาก server จะนำข้อมูลใน res.data นำไปใช้ต่อ
     {
-      onSuccess() {
+      onSuccess() {  //เมื่อเสร็จแล้วให้ clearcart (method)
         clearCart();
       },
     }
   );
-  const email = data?.customer_details?.email;
+  console.log(data, error);
+  const email = data?.customer_details?.email; //res.data นำมาใช้ตรงนี้
 
   return (
     <div className="container xl:max-w-screen-xl mx-auto py-12 px-6 text-center">

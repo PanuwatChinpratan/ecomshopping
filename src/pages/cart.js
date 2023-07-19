@@ -12,9 +12,12 @@ export default function CartPage() {
     clearCart,
     redirectToCheckout,
   } = useShoppingCart();
-  const [isRedirecting, setRedirecting] = useState(false);
-  console.log(cartDetails);
-  async function onCheckout() {
+
+  const [isRedirecting, setRedirecting] = useState(false); //สั่งปุ่มปิดเปิด
+  console.log(cartDetails); //cartDetails = useShoppingCart คือ pruduct ที่เพิ่มมาเป็น object
+
+  async function onCheckout(e) {
+    e.preventDefault()
     if (cartCount > 0) {
       try {
         setRedirecting(true);

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { stripe } from "../../../utils/stripe";
 import { CheckIcon } from "@heroicons/react/24/solid";
-import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import { useShoppingCart } from "use-shopping-cart";
+import { formatCurrencyString } from "use-shopping-cart/core";
 import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
@@ -13,7 +14,7 @@ export default function ProductPage({ product }) {
   function AddtoCart(e) {
     e.preventDefault();
     const id = toast.loading(`Adding ${count} items${count > 1 ? "s" : ""}`);
-    addItem(product, {count});
+    addItem(product, { count });
     toast.success(`${count}${product.name} added`, { id });
   }
 

@@ -1,18 +1,19 @@
 import { stripe } from "../../../../utils/stripe";
 
 export default async function handler(req, res) {
-    if (req.method === "GET") {
+  if (req.method === "GET") {
     const id = req.query.id;
-  try {
-    if (!id.startsWith("cs_")) {
-      throw new Error("Incorrect checkout session id");
+    try {
+      if (!id.startsWith("cs_")) { //if เช็คว่าตรงกับ cs_ ไหม 
+        throw new Error("Incorrect checkout session id");
+      }
+      const checkoutSession = await stripe.checkout.sessions.retrieve(id); //ตรวจสอบว่า  const id = req.query.id; ที่ส่งมาตรงกับ stripe id ไหม
+      res.status(200).json(checkoutSession);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ statusCode: 500, message: error.message });
     }
-    const checkoutSession = await stripe.checkout.sessions.retrieve(id);
-    res.status(200).json(checkoutSession);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ statusCode: 500, message: error.message });
-  }}else {
+  } else {
     res.setHeader("Allow", "GET");
     res.status(405).end("Method Not Allowed");
   }

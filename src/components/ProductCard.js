@@ -1,11 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import Rating from "./Rating";
-import { formatCurrencyString, useShoppingCart } from "use-shopping-cart";
+import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "react-hot-toast";
+import { formatCurrencyString } from "use-shopping-cart/core";
 
 export default function ProductCard({ product }) {
-
   const { addItem } = useShoppingCart();
   function AddtoCart(e) {
     e.preventDefault();
@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
     addItem(product);
     toast.success(`${product.name} added`, { id });
   }
-  
+
   return (
     <Link
       href={`/products/${product.id}`}
@@ -37,8 +37,8 @@ export default function ProductCard({ product }) {
             <p className="text-gray-500">Price</p>
             <p className="text-lg font-semibold">
               {formatCurrencyString({
-                value: product.price,
                 currency: product.currency,
+                value: product.price,
               })}
             </p>
           </div>
