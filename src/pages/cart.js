@@ -12,12 +12,12 @@ export default function CartPage() {
     clearCart,
     redirectToCheckout,
   } = useShoppingCart();
-
+  console.log("formattedTotalPrice", formattedTotalPrice);
   const [isRedirecting, setRedirecting] = useState(false); //สั่งปุ่มปิดเปิด
   console.log(cartDetails); //cartDetails = useShoppingCart คือ pruduct ที่เพิ่มมาเป็น object
 
   async function onCheckout(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (cartCount > 0) {
       try {
         setRedirecting(true);
@@ -53,12 +53,15 @@ export default function CartPage() {
         </>
       ) : (
         <>
-          <h2 className="text-4xl font-semibold">
+          <h2 className="text-4xl font-bold text-gray-800 drop-shadow-sm">
             Your shopping cart is empty
           </h2>
-          <p className="mt-1 text-xl">
-            Check out our awesome products{" "}
-            <Link href="/" className="text-red-500 underline">
+          <p className="mt-3 text-lg text-gray-600">
+            Check out products{" "}
+            <Link
+              href="/"
+              className="text-red-500 font-semibold underline hover:text-red-600 transition duration-200 ease-in-out"
+            >
               here!
             </Link>
           </p>

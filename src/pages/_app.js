@@ -6,7 +6,7 @@ const stripeKey = process.env.NEXT_PUBLIC_STRIPE_KEY;
 
 export default function App({ Component, pageProps }) {
   return (
-    <CartProvider cartMode="checkout-session" stripe={stripeKey} currency="USD">
+    <CartProvider cartMode="checkout-session" stripe={stripeKey} currency="THB">
       <AppLayout>
         <Component {...pageProps} />
         <Toaster/>
