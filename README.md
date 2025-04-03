@@ -3,6 +3,6 @@
 Create a `.env` file in the root directory of the project and add the following variables:
 
 ```env
-NEXT_PUBLIC_STRIPE_KEY=pk_test_51NNq3ALwgwT4yBqeORjCaruTNwMVJTc2Kt1LXHrDgJLIzC8BqGqyP4HF1olOnK3XpCHyWI3c3G4Anzb0opDPeaIr00WsS1o1Nc
-STRIPE_SECRET_KEY=sk_test_51NNq3ALwgwT4yBqeaq1ONBGcaTzOd6BuYMKApvKeUr1VPwX0Jo6uH2XvXohsweV6baoLb61al6eI3m6IlbzzWkAw001isyyuYw
+NEXT_PUBLIC_STRIPE_KEY=
+STRIPE_SECRET_KEY=
 
